@@ -50,7 +50,7 @@ jobs:
     -  name: run report
        run: |
         cml-publish  reports/residuals.png --md > report.md
-        cml-publish  reports/residuals.png --md > report.md
+        cml-publish  reports/feature_importance.png --md > report.md
     -  name: run report
        run: |
         cml-send-comment report.md
