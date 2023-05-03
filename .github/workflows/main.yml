@@ -17,41 +17,44 @@ jobs:
     runs-on: ubuntu-latest
     container: docker://dvcorg/cml-py3:latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python 3.10
-      uses: actions/setup-python@v3
-#     - uses: iterative/setup-cml@v1
-      with:
-        python-version: "3.10"
-    - name: Install dependencies
-      run: |
-        pip install flake8 pytest black isort
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name : initialise dvc 
-      run: |
-          pip install dvc
-    - name: Pull dataset
-      run: dvc pull 
-    - name: verify dependencies
-      run: |
-        pip list
-    -  name: run train
-       run: |
-        python train.py
-        echo "###########metrics############" > report.md
-        cat reports/metrics.txt >> report.md
-        echo "###########data vis############" > report.md
-    -  name: run report
-       run: |
-        cml-publish  reports/residuals.png --md > report.md
-        cml-publish  reports/residuals.png --md > report.md
-    -  name: run report
-       run: |
-        cml-send-comment report.md
-    - name: format with black and isort
-      run: |
-        black .
-        isort .
-    - name: Test with pytest
-      run: |
-        pytest
+      - name: Install dependencies
+        run: |
+          ldd --version
+#     - uses: actions/checkout@v3
+#     - name: Set up Python 3.10
+#       uses: actions/setup-python@v3
+# #     - uses: iterative/setup-cml@v1
+#       with:
+#         python-version: "3.10"
+#     - name: Install dependencies
+#       run: |
+#         pip install flake8 pytest black isort
+#         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+#     - name : initialise dvc 
+#       run: |
+#           pip install dvc
+#     - name: Pull dataset
+#       run: dvc pull 
+#     - name: verify dependencies
+#       run: |
+#         pip list
+#     -  name: run train
+#        run: |
+#         python train.py
+#         echo "###########metrics############" > report.md
+#         cat reports/metrics.txt >> report.md
+#         echo "###########data vis############" > report.md
+#     -  name: run report
+#        run: |
+#         cml-publish  reports/residuals.png --md > report.md
+#         cml-publish  reports/residuals.png --md > report.md
+#     -  name: run report
+#        run: |
+#         cml-send-comment report.md
+#     - name: format with black and isort
+#       run: |
+#         black .
+#         isort .
+#     - name: Test with pytest
+#       run: |
+#         pytest
