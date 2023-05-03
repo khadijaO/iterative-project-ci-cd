@@ -31,20 +31,20 @@ jobs:
       run: |
         pip install flake8 pytest black isort
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-#     - name : initialise dvc 
-#       run: |
-#           pip install dvc
-#     - name: Pull dataset
-#       run: dvc pull 
-#     - name: verify dependencies
-#       run: |
-#         pip list
-#     -  name: run train
-#        run: |
-#         python train.py
-#         echo "###########metrics############" > report.md
-#         cat reports/metrics.txt >> report.md
-#         echo "###########data vis############" > report.md
+    - name : initialise dvc 
+      run: |
+          pip install dvc
+    - name: Pull dataset
+      run: dvc pull 
+    - name: verify dependencies
+      run: |
+        pip list
+    -  name: run train
+       run: |
+        python train.py
+        echo "###########metrics############" > report.md
+        cat reports/metrics.txt >> report.md
+        echo "###########data vis############" > report.md
 #     -  name: run report
 #        run: |
 #         cml-publish  reports/residuals.png --md > report.md
