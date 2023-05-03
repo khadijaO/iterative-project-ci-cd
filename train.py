@@ -10,7 +10,7 @@ from sklearn.model_selection import train_test_split
 from utils import load_data
 
 # Set random seed
-seed = 42
+seed =               42
 
 
 ################################
