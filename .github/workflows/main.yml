@@ -15,15 +15,15 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    container: ghcr.io/iterative/cml:0-dvc2-base1
+    container: docker://dvcorg/cml-py3:latest
     steps:
      
     - uses: actions/checkout@v3
-    - name: Set up Python 3.10
+    - name: Set up Python 3.8
       uses: actions/setup-python@v3
 #     - uses: iterative/setup-cml@v1
       with:
-        python-version: "3.10"
+        python-version: "3.8"
     - name: Install dependencies
       run: |
           ldd --version
