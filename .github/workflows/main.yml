@@ -43,9 +43,12 @@ jobs:
         echo "###########metrics############" > report.md
         cat reports/metrics.txt >> report.md
         echo "###########data vis############" > report.md
-
+    -  name: run report
+       run: |
         cml-publish  reports/residuals.png --md > report.md
         cml-publish  reports/residuals.png --md > report.md
+    -  name: run report
+       run: |
         cml-send-comment report.md
     - name: format with black and isort
       run: |
