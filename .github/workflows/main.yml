@@ -37,7 +37,7 @@ jobs:
       run: |
           pip install dvc
     - name: Pull dataset
-      run: dvc pull 
+      run: dvc pull -r origin
     - name: verify dependencies
       run: |
         pip list
