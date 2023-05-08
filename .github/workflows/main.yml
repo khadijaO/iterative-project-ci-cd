@@ -38,9 +38,10 @@ jobs:
           pip install dvc
     - name: Pull dataset
       run: dvc pull -r origin
-    - name: verify dependencies
+    - name: verify data
       run: |
-        pip list
+        cd data
+        ls
     -  name: run train
        run: |
         python train.py
